@@ -93,6 +93,7 @@
     <Content Include="Global.asax" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\metro.min.js" />
+    <Content Include="Scripts\vue.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
