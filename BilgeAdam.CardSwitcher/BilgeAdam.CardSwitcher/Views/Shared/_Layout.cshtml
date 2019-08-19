@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html class="metro-no-touch-device">
+<head>
+    <title>Bizim Oyun</title>
+    <link href="~/Content/metro-all.min.css" rel="stylesheet" />
+    <link href="~/Content/site.css" rel="stylesheet" />
+</head>
+<body>
+    <header class="bg-crimson fg-white app-bar-expand" data-role="appbar" data-expand-point="md">
+        <a href="#" class="brand no-hover">
+            <span class="p-2 bd-dark border-radius">
+                Card Switcher
+            </span>
+        </a>
+
+        <ul class="app-bar-menu">
+            <li><a href="@Url.Action("Index","Home")">Ana Sayfa</a></li>
+            <li>
+                <a href="#" class="dropdown-toggle">Oyun</a>
+                <ul class="d-menu bg-crimson fg-white" data-role="dropdown">
+                    <li><a href="#">Yeni Oyun</a></li>
+                    <li><a href="#">Katıl</a></li>
+                    <li class="divider bg-lightGray"></li>
+                    <li><a href="#">İzle</a></li>
+                </ul>
+            </li>
+            <li><a href="@Url.Action("Players", "Home")">Sıralama</a></li>
+            <li><a href="#">Bize Yazın</a></li>
+        </ul>
+    </header>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="cell">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/metro.min.js"></script>
+</body>
+</html>

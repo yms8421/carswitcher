@@ -1,0 +1,9 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+/BilgeAdam.CardSwitcher/.vs
+/BilgeAdam.CardSwitcher/BilgeAdam.CardSwitcher/bin
+/BilgeAdam.CardSwitcher/BilgeAdam.CardSwitcher/obj/Debug
+/BilgeAdam.CardSwitcher/packages
