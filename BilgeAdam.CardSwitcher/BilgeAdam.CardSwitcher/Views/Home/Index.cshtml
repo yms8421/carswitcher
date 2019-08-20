@@ -12,15 +12,15 @@
     <div data-role="panel"
          data-title-caption="Katılabileceğiniz Oyunlar"
          data-title-icon="<span class='mif-apps'></span>">
-        @for (int i = 0; i < 5; i++)
-        {
-            <ul data-role="listview" data-view="content" data-select-node="true">
+        <ul data-role="listview" data-view="content" data-select-node="true">
+            @for (int i = 0; i < 5; i++)
+            {
                 <li data-icon="<span class='mif-user fg-orange'>"
                     data-caption="Oyuncu Adı"
                     data-content="<span class='text-muted'>Puan : 234</span>"></li>
-            </ul>
-        }
 
+            }
+        </ul>
     </div>
 
 </div>
