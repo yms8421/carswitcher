@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BilgeAdam.CardSwitcher", "B
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BilgeAdam.CardSwitcher.Data", "BilgeAdam.CardSwitcher.Data\BilgeAdam.CardSwitcher.Data.csproj", "{F22BD94F-B09E-44EE-A9FA-21319B82D85E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BilgeAdam.CardSwitcher.Repository", "BilgeAdam.CardSwitcher.Repository\BilgeAdam.CardSwitcher.Repository.csproj", "{569E1A67-9528-493B-92B9-49824DF8D92B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{F22BD94F-B09E-44EE-A9FA-21319B82D85E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F22BD94F-B09E-44EE-A9FA-21319B82D85E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F22BD94F-B09E-44EE-A9FA-21319B82D85E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{569E1A67-9528-493B-92B9-49824DF8D92B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{569E1A67-9528-493B-92B9-49824DF8D92B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{569E1A67-9528-493B-92B9-49824DF8D92B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{569E1A67-9528-493B-92B9-49824DF8D92B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

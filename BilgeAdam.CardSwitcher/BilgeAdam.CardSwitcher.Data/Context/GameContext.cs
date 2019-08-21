@@ -7,7 +7,6 @@ namespace BilgeAdam.CardSwitcher.Data.Context
     {
         public GameContext() : base("gameConnStr")
         {
-
         }
 
         public virtual DbSet<User> Users { get; set; }

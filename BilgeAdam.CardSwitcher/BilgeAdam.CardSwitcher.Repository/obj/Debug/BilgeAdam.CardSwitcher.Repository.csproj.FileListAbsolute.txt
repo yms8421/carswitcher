@@ -1,0 +1,15 @@
+C:\Users\can.perk\source\repos\carswitcher\BilgeAdam.CardSwitcher\BilgeAdam.CardSwitcher.Repository\bin\Debug\BilgeAdam.CardSwitcher.Repository.dll.config
+C:\Users\can.perk\source\repos\carswitcher\BilgeAdam.CardSwitcher\BilgeAdam.CardSwitcher.Repository\bin\Debug\BilgeAdam.CardSwitcher.Repository.dll
+C:\Users\can.perk\source\repos\carswitcher\BilgeAdam.CardSwitcher\BilgeAdam.CardSwitcher.Repository\bin\Debug\BilgeAdam.CardSwitcher.Repository.pdb
+C:\Users\can.perk\source\repos\carswitcher\BilgeAdam.CardSwitcher\BilgeAdam.CardSwitcher.Repository\bin\Debug\BilgeAdam.CardSwitcher.Data.dll
+C:\Users\can.perk\source\repos\carswitcher\BilgeAdam.CardSwitcher\BilgeAdam.CardSwitcher.Repository\bin\Debug\EntityFramework.dll
+C:\Users\can.perk\source\repos\carswitcher\BilgeAdam.CardSwitcher\BilgeAdam.CardSwitcher.Repository\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\can.perk\source\repos\carswitcher\BilgeAdam.CardSwitcher\BilgeAdam.CardSwitcher.Repository\bin\Debug\BilgeAdam.CardSwitcher.Data.pdb
+C:\Users\can.perk\source\repos\carswitcher\BilgeAdam.CardSwitcher\BilgeAdam.CardSwitcher.Repository\bin\Debug\BilgeAdam.CardSwitcher.Data.dll.config
+C:\Users\can.perk\source\repos\carswitcher\BilgeAdam.CardSwitcher\BilgeAdam.CardSwitcher.Repository\bin\Debug\EntityFramework.xml
+C:\Users\can.perk\source\repos\carswitcher\BilgeAdam.CardSwitcher\BilgeAdam.CardSwitcher.Repository\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\can.perk\source\repos\carswitcher\BilgeAdam.CardSwitcher\BilgeAdam.CardSwitcher.Repository\obj\Debug\BilgeAdam.CardSwitcher.Repository.csprojAssemblyReference.cache
+C:\Users\can.perk\source\repos\carswitcher\BilgeAdam.CardSwitcher\BilgeAdam.CardSwitcher.Repository\obj\Debug\BilgeAdam.CardSwitcher.Repository.csproj.CoreCompileInputs.cache
+C:\Users\can.perk\source\repos\carswitcher\BilgeAdam.CardSwitcher\BilgeAdam.CardSwitcher.Repository\obj\Debug\BilgeAdam.CardSwitcher.Repository.csproj.CopyComplete
+C:\Users\can.perk\source\repos\carswitcher\BilgeAdam.CardSwitcher\BilgeAdam.CardSwitcher.Repository\obj\Debug\BilgeAdam.CardSwitcher.Repository.dll
+C:\Users\can.perk\source\repos\carswitcher\BilgeAdam.CardSwitcher\BilgeAdam.CardSwitcher.Repository\obj\Debug\BilgeAdam.CardSwitcher.Repository.pdb

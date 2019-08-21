@@ -104,10 +104,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -117,6 +119,7 @@
     <Content Include="Views\Home\Players.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -127,7 +130,16 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="mif\" />
-    <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BilgeAdam.CardSwitcher.Data\BilgeAdam.CardSwitcher.Data.csproj">
+      <Project>{f22bd94f-b09e-44ee-a9fa-21319b82d85e}</Project>
+      <Name>BilgeAdam.CardSwitcher.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BilgeAdam.CardSwitcher.Repository\BilgeAdam.CardSwitcher.Repository.csproj">
+      <Project>{569E1A67-9528-493B-92B9-49824DF8D92B}</Project>
+      <Name>BilgeAdam.CardSwitcher.Repository</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
