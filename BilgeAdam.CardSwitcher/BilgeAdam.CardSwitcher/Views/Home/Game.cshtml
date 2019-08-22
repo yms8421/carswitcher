@@ -1,0 +1,33 @@
+﻿@model Dictionary<int, BilgeAdam.CardSwitcher.Models.Point>
+@{
+    ViewBag.Title = "Oyun Alanı";
+}
+
+<h2>Oyun Alanı</h2>
+<div class="container" style="margin-left:25%">
+    @{ var index = 1; }
+    @for (int i = 0; i < 6; i++)
+    {
+        <div class="gameRow">
+            @for (int j = 0; j < 6; j++)
+            {
+                <div class="gameCell">
+                    <div class="box" index="@index">
+                        <div class="back">
+                            @{
+                                var card = Model.First(x => x.Value.Point1 == index || x.Value.Point2 == index);
+                                var imageName = card.Key + ".jfif";
+                            }
+                            @if (true)
+                            {
+                                <img src="~/Images/cards/@imageName" />
+                            }
+                        </div>
+                        @*Satır @(i + 1), Sütun @(j + 1)*@
+                    </div>
+                </div>
+                index++;
+            }
+        </div>
+    }
+</div>

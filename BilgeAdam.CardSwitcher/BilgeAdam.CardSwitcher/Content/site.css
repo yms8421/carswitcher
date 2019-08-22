@@ -1,5 +1,5 @@
 ﻿body {
-    padding-top:64px;
+    padding-top: 64px;
 }
 
 .center {
@@ -8,11 +8,35 @@
 }
 
 .userInfo {
-    position:absolute;
-    right:100px;
+    position: absolute;
+    right: 100px;
 }
 
-.logout{
-    position:absolute;
-    right:25px;
+.logout {
+    position: absolute;
+    right: 25px;
+}
+
+.gameRow {
+    clear: both;
+}
+
+.gameCell {
+    float: left;
+    padding: 10px;
+}
+
+.box {
+    border: 2px dashed #DDD;
+    width: 60px;
+    height: 60px;
+}
+.box:hover{
+    border: 2px solid #19a4a4;
+    cursor:pointer;
+}
+
+.back img {
+    width: 56px;
+    height: 56px;
 }

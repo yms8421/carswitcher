@@ -97,6 +97,25 @@
     <Content Include="Content\metro-all.min.css" />
     <Content Include="Content\site.css" />
     <Content Include="Global.asax" />
+    <Content Include="Images\back.jpg" />
+    <Content Include="Images\cards\1.jfif" />
+    <Content Include="Images\cards\10.jfif" />
+    <Content Include="Images\cards\11.jfif" />
+    <Content Include="Images\cards\12.jfif" />
+    <Content Include="Images\cards\13.jfif" />
+    <Content Include="Images\cards\14.jfif" />
+    <Content Include="Images\cards\15.jfif" />
+    <Content Include="Images\cards\16.jfif" />
+    <Content Include="Images\cards\17.jfif" />
+    <Content Include="Images\cards\18.jfif" />
+    <Content Include="Images\cards\2.jfif" />
+    <Content Include="Images\cards\3.jfif" />
+    <Content Include="Images\cards\4.jfif" />
+    <Content Include="Images\cards\5.jfif" />
+    <Content Include="Images\cards\6.jfif" />
+    <Content Include="Images\cards\7.jfif" />
+    <Content Include="Images\cards\8.jfif" />
+    <Content Include="Images\cards\9.jfif" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\metro.min.js" />
     <Content Include="Scripts\vue.js" />
@@ -111,6 +130,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\LoginViewModel.cs" />
+    <Compile Include="Models\Point.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -121,6 +141,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Home\Game.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
