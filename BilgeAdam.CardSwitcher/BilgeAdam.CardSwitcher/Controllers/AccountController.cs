@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 
 namespace BilgeAdam.CardSwitcher.Controllers
 {
@@ -21,13 +22,22 @@ namespace BilgeAdam.CardSwitcher.Controllers
         {
             var user = new UserRepository();
             var loggedInUser = user.Get(i => i.UserName == model.UserName && i.Password == model.Password);
-            //Oturum aç ve oyun alanına yönlendir
-            return RedirectToAction("Index", "Home");
+            if (loggedInUser != null)
+            {
+                FormsAuthentication.SetAuthCookie(loggedInUser.UserName, false);
+                Session["UserId"] = loggedInUser.Id;
+                //Oturum aç ve oyun alanına yönlendir
+                return RedirectToAction("Index", "Home");
+            }
+            ViewBag.Message = "Kullanıcı adı veya parola yanlış";
+            return View();
         }
 
         public ActionResult Logout()
         {
-            return View();
+            FormsAuthentication.SignOut();
+            Session.Clear();
+            return RedirectToAction("Login");
         }
     }
 }
