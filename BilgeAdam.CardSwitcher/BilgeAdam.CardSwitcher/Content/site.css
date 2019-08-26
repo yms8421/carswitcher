@@ -36,7 +36,7 @@
     cursor:pointer;
 }
 
-.back img {
+.back img, .front img {
     width: 56px;
     height: 56px;
 }

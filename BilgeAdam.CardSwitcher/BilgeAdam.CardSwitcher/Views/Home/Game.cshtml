@@ -4,30 +4,68 @@
 }
 
 <h2>Oyun Alanı</h2>
-<div class="container" style="margin-left:25%">
-    @{ var index = 1; }
-    @for (int i = 0; i < 6; i++)
-    {
-        <div class="gameRow">
-            @for (int j = 0; j < 6; j++)
-            {
-                <div class="gameCell">
-                    <div class="box" index="@index">
-                        <div class="back">
-                            @{
-                                var card = Model.First(x => x.Value.Point1 == index || x.Value.Point2 == index);
-                                var imageName = card.Key + ".jfif";
-                            }
-                            @if (true)
-                            {
-                                <img src="~/Images/cards/@imageName" />
-                            }
-                        </div>
-                        @*Satır @(i + 1), Sütun @(j + 1)*@
-                    </div>
+<div id="ctx" class="container">
+    <h3>Tıklama Sayısı {{clickCount}}</h3>
+    <div>Çevrilenler : {{switched}}</div>
+    <div>Kazanılanlar : {{points}}</div>
+
+    <div class="row">
+        <div class="cell-2" v-for="card in cards">
+            <div class="box" @@click="boxClick(card.cardName)">
+                <div class="back">
+                    <img v-bind:src="card.path" />
                 </div>
-                index++;
-            }
+            </div>
         </div>
-    }
+    </div>
 </div>
+
+@section scripts{
+    <script>
+
+        $(document).ready(function () {
+            $(".box.can-flip").flip({ axis: 'y' });
+        });
+
+        var game = new Vue({
+            el: "#ctx",
+            data: {
+                clickCount: 0,
+                status: true,
+                canFlip: true,
+                switched: [],
+                points: [],
+                cards: []
+            },
+            mounted() {
+                var json = '@Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model))';
+                var cards = JSON.parse(json);
+                var unsortedCards = [];
+                for (var i = 1; i <= 18; i++) {
+                    unsortedCards.push({ cardName: i, location: cards[i].Point1, path: "/Images/cards/" + i + ".jfif" });
+                    unsortedCards.push({ cardName: i, location: cards[i].Point2, path: "/Images/cards/" + i + ".jfif" });
+                }
+                this.cards = _.sortBy(unsortedCards, function (c) { return c.location });
+            },
+            methods: {
+                boxClick: function (e) {
+                    this.switched.push(e);
+                    this.clickCount++;
+                    if (this.clickCount === 2) {
+                        if (this.switched[0] === this.switched[1]) {
+                            this.clickCount = 0;
+                            this.points.push(this.switched[0]);
+                            this.points.push(this.switched[1]);
+                            this.switched = [];
+                        }
+                        else {
+                            this.switched = [];
+                            this.clickCount = 0;
+                        }
+                    }
+
+                }
+            }
+        });
+    </script>
+}
