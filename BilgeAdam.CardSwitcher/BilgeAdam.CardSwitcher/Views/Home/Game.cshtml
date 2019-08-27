@@ -1,5 +1,4 @@
-﻿@model Dictionary<int, BilgeAdam.CardSwitcher.Models.Point>
-@{
+﻿@{
     ViewBag.Title = "Oyun Alanı";
 }
 
@@ -7,13 +6,18 @@
 <div id="ctx" class="container">
     <h3>Tıklama Sayısı {{clickCount}}</h3>
     <div>Çevrilenler : {{switched}}</div>
-    <div>Kazanılanlar : {{points}}</div>
-
-    <div class="row">
-        <div class="cell-2" v-for="card in cards">
-            <div class="box" @@click="boxClick(card.cardName)">
-                <div class="back">
-                    <img v-bind:src="card.path" />
+    <div>Puan : {{points.length * 2}}</div>
+    <div>Card : {{selected}}</div>
+    <div>
+        <button class="button primary large" @@click="start">Oyun Başlat</button>
+    </div>
+    <div class="grid">
+        <div class="gameRow">
+            <div class="gameCell" v-for="card in cards">
+                <div class="box" @@click="boxClick(card)">
+                    <div class="back">
+                        <img v-bind:src="card.path" />
+                    </div>
                 </div>
             </div>
         </div>
@@ -22,9 +26,37 @@
 
 @section scripts{
     <script>
-
+        var gs = null;
         $(document).ready(function () {
-            $(".box.can-flip").flip({ axis: 'y' });
+            gs = $.connection.gameHub;
+            gs.client.switchCard = function (location) {
+                game.selected = { location: location, cardName: "Fake" };
+            }
+
+            gs.client.setCardDesign = function (designJson) {
+                var cards = JSON.parse(designJson);
+                var unsortedCards = [];
+                for (var i = 1; i <= 18; i++) {
+                    unsortedCards.push({
+                        cardName: i,
+                        location: cards[i].Point1,
+                        path: "/Images/cards/" + i + ".jfif",
+                        isMatched: false
+                    });
+                    unsortedCards.push({
+                        cardName: i,
+                        location: cards[i].Point2,
+                        path: "/Images/cards/" + i + ".jfif",
+                        isMatched: false
+                    });
+                }
+                game.cards = _.sortBy(unsortedCards, function (c) { return c.location });
+            }
+
+            $.connection.hub.start().done(function () {
+                console.log("Bağlantı sağlandı");
+            });
+
         });
 
         var game = new Vue({
@@ -35,25 +67,24 @@
                 canFlip: true,
                 switched: [],
                 points: [],
-                cards: []
-            },
-            mounted() {
-                var json = '@Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model))';
-                var cards = JSON.parse(json);
-                var unsortedCards = [];
-                for (var i = 1; i <= 18; i++) {
-                    unsortedCards.push({ cardName: i, location: cards[i].Point1, path: "/Images/cards/" + i + ".jfif" });
-                    unsortedCards.push({ cardName: i, location: cards[i].Point2, path: "/Images/cards/" + i + ".jfif" });
-                }
-                this.cards = _.sortBy(unsortedCards, function (c) { return c.location });
+                cards: [],
+                selected: null
             },
             methods: {
-                boxClick: function (e) {
-                    this.switched.push(e);
+                boxClick: function (card) {
+                    gs.server.switchCard(card.location);
+                    if (card.isMatched) {
+                        return;
+                    }
+                    this.switched.push(card);
+                    this.selected = card;
                     this.clickCount++;
                     if (this.clickCount === 2) {
-                        if (this.switched[0] === this.switched[1]) {
+                        if (this.switched[0].cardName === this.switched[1].cardName &&
+                            this.switched[0].location !== this.switched[1].location) {
                             this.clickCount = 0;
+                            this.switched[0].isMatched = true;
+                            this.switched[1].isMatched = true;
                             this.points.push(this.switched[0]);
                             this.points.push(this.switched[1]);
                             this.switched = [];
@@ -61,9 +92,13 @@
                         else {
                             this.switched = [];
                             this.clickCount = 0;
+                            this.selected = null;
                         }
                     }
 
+                },
+                start: function () {
+                    gs.server.getDesign();
                 }
             }
         });
