@@ -140,10 +140,11 @@
     <Content Include="Images\cards\9.jfif" />
     <Content Include="mif\metro.svg" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
-    <Content Include="Scripts\jquery.flip.min.js" />
     <Content Include="Scripts\jquery.signalR-2.4.1.js" />
     <Content Include="Scripts\jquery.signalR-2.4.1.min.js" />
     <Content Include="Scripts\metro.min.js" />
+    <Content Include="Scripts\pageScripts\game.js" />
+    <Content Include="Scripts\pageScripts\index.js" />
     <Content Include="Scripts\underscore.js" />
     <Content Include="Scripts\vue.js" />
     <Content Include="Web.config" />

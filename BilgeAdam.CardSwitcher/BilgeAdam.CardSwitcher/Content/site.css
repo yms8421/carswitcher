@@ -2,42 +2,73 @@
     padding-top: 64px;
 }
 
-.center {
-    display: flex;
-    justify-content: center;
+#ctx {
+    width:720px;
+    margin: 0 auto;
 }
 
-.userInfo {
-    position: absolute;
-    right: 100px;
+#ctx .grid {
+    height: 480px;
 }
-
-.logout {
-    position: absolute;
-    right: 25px;
-}
-
 .gameRow {
     display: grid;
     grid-gap: 0px;
     grid-template-columns: repeat(6, minmax(60px, 60px));
+    width:360px;
+    margin-left:180px;
+    margin-top:60px;
 }
 
 .gameCell {
-    padding:0px;
+    padding: 0px;
 }
 
 .box {
     border: 2px dashed #DDD;
     width: 60px;
     height: 60px;
-}
-.box:hover{
-    border: 2px solid #19a4a4;
-    cursor:pointer;
+    -webkit-transition: -webkit-transform 1s;
+    -moz-transition: -moz-transform 1s;
+    -o-transition: -o-transform 1s;
+    transition: transform 1s;
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    -o-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-transform-origin: 50% 50%;
 }
 
-.back img, .front img {
-    width: 56px;
-    height: 56px;
+    .box:hover {
+        border: 2px solid #19a4a4;
+        cursor: pointer;
+    }
+
+.back {
+    background: blue;
+    position: absolute;
+    top:0px;
+    left:0px;
+    -webkit-transform: rotateY( 180deg );
+    -moz-transform: rotateY( 180deg );
+    -o-transform: rotateY( 180deg );
+    transform: rotateY( 180deg );
+}
+
+    .back img, .front img {
+        width: 56px;
+        height: 56px;
+    }
+
+.front {
+    background: red;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
+.box.flipped {
+    -webkit-transform: rotateY( 180deg );
+    -moz-transform: rotateY( 180deg );
+    -o-transform: rotateY( 180deg );
+    transform: rotateY( 180deg );
 }

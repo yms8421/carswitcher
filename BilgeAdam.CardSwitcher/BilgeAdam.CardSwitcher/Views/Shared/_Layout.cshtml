@@ -15,35 +15,25 @@
             </span>
         </a>
 
-        <ul class="app-bar-menu">
+        <ul class="app-bar-menu ml-auto">
             <li><a href="@Url.Action("Index","Home")">Ana Sayfa</a></li>
             <li>
                 <a href="#" class="dropdown-toggle">Oyun</a>
                 <ul class="d-menu bg-crimson fg-white" data-role="dropdown">
-                    <li><a href="#">Yeni Oyun</a></li>
+                    <li><a href="@Url.Action("Game", "Home")">Yeni Oyun</a></li>
                     <li><a href="#">Katıl</a></li>
                     <li class="divider bg-lightGray"></li>
-                    <li><a href="#">İzle</a></li>
                 </ul>
             </li>
-            <li><a href="@Url.Action("Players", "Home")">Sıralama</a></li>
-            <li><a href="#">Bize Yazın</a></li>
+            <li>@HttpContext.Current.User.Identity.Name</li>
+            <li><a class="fg-white" href='@Url.Action("Logout", "Account")'>Çıkış Yap</a></li>
         </ul>
-        <div class="userInfo">@HttpContext.Current.User.Identity.Name</div>
-        <div class="logout">
-            <a class="fg-white" href='@Url.Action("Logout", "Account")'>Çıkış Yap</a>
-        </div>
     </header>
     <div class="container-fluid">
-        <div class="row">
-            <div class="cell">
-                @RenderBody()
-            </div>
-        </div>
+        @RenderBody()
     </div>
     <script src="~/Scripts/jquery-3.3.1.min.js"></script>
     <script src="~/Scripts/metro.min.js"></script>
-    <script src="~/Scripts/jquery.flip.min.js"></script>
     <script src="~/Scripts/jquery.signalR-2.4.1.min.js"></script>
     <script src="~/signalr/hubs"></script>
     @RenderSection("scripts", false)
@@ -51,8 +41,8 @@
 </html>
 
 @*
-kazanan oyuncu çevirdiği kartın 2 katını kazanır
-kaybeden oyuncu kazananın yarısı kadar kaybeder
-oyuncu puanı 02ın altına inmez
+    kazanan oyuncu çevirdiği kartın 2 katını kazanır
+    kaybeden oyuncu kazananın yarısı kadar kaybeder
+    oyuncu puanı 0'ın altına inmez
 
 *@

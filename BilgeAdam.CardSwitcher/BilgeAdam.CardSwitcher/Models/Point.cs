@@ -1,8 +1,8 @@
 ﻿namespace BilgeAdam.CardSwitcher.Models
 {
-    public class Point
+    public class Location
     {
-        public Point(int p1, int p2)
+        public Location(int p1, int p2)
         {
             Point1 = p1;
             Point2 = p2;

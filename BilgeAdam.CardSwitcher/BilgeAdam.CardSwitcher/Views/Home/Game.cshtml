@@ -2,19 +2,17 @@
     ViewBag.Title = "Oyun Alanı";
 }
 
-<h2>Oyun Alanı</h2>
-<div id="ctx" class="container">
-    <h3>Tıklama Sayısı {{clickCount}}</h3>
-    <div>Çevrilenler : {{switched}}</div>
-    <div>Puan : {{points.length * 2}}</div>
-    <div>Card : {{selected}}</div>
+<div id="ctx">
     <div>
-        <button class="button primary large" @@click="start">Oyun Başlat</button>
+        <button class="button primary large" @@click="start" v-if="gameIdle">Oyun Başlat</button>
     </div>
-    <div class="grid">
+    <div class="grid" :class="{ 'bg-green' : canPlay, 'bg-red' : !canPlay }">
         <div class="gameRow">
             <div class="gameCell" v-for="card in cards">
-                <div class="box" @@click="boxClick(card)">
+                <div class="box" @@click="boxClick(card)" :class="{ 'flipped' : card.isActive }">
+                    <div class="front">
+                        <img src="~/Images/back.jpg" />
+                    </div>
                     <div class="back">
                         <img v-bind:src="card.path" />
                     </div>
@@ -22,85 +20,12 @@
             </div>
         </div>
     </div>
+    <div><b>Puan :</b> {{points.length * 2}}</div>
 </div>
 
 @section scripts{
     <script>
-        var gs = null;
-        $(document).ready(function () {
-            gs = $.connection.gameHub;
-            gs.client.switchCard = function (location) {
-                game.selected = { location: location, cardName: "Fake" };
-            }
-
-            gs.client.setCardDesign = function (designJson) {
-                var cards = JSON.parse(designJson);
-                var unsortedCards = [];
-                for (var i = 1; i <= 18; i++) {
-                    unsortedCards.push({
-                        cardName: i,
-                        location: cards[i].Point1,
-                        path: "/Images/cards/" + i + ".jfif",
-                        isMatched: false
-                    });
-                    unsortedCards.push({
-                        cardName: i,
-                        location: cards[i].Point2,
-                        path: "/Images/cards/" + i + ".jfif",
-                        isMatched: false
-                    });
-                }
-                game.cards = _.sortBy(unsortedCards, function (c) { return c.location });
-            }
-
-            $.connection.hub.start().done(function () {
-                console.log("Bağlantı sağlandı");
-            });
-
-        });
-
-        var game = new Vue({
-            el: "#ctx",
-            data: {
-                clickCount: 0,
-                status: true,
-                canFlip: true,
-                switched: [],
-                points: [],
-                cards: [],
-                selected: null
-            },
-            methods: {
-                boxClick: function (card) {
-                    gs.server.switchCard(card.location);
-                    if (card.isMatched) {
-                        return;
-                    }
-                    this.switched.push(card);
-                    this.selected = card;
-                    this.clickCount++;
-                    if (this.clickCount === 2) {
-                        if (this.switched[0].cardName === this.switched[1].cardName &&
-                            this.switched[0].location !== this.switched[1].location) {
-                            this.clickCount = 0;
-                            this.switched[0].isMatched = true;
-                            this.switched[1].isMatched = true;
-                            this.points.push(this.switched[0]);
-                            this.points.push(this.switched[1]);
-                            this.switched = [];
-                        }
-                        else {
-                            this.switched = [];
-                            this.clickCount = 0;
-                            this.selected = null;
-                        }
-                    }
-
-                },
-                start: function () {
-                    gs.server.getDesign();
-                }
-            }
-        });
+        var userName = '@HttpContext.Current.User.Identity.Name';
     </script>
+    <script src="~/Scripts/pageScripts/game.js"></script>
 }
